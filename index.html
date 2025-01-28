@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Formulário</title>
     <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="stylesheet" href="src/styles/media.css">
 </head>
 <body>
     <main id="container">
         <div id="form_header">
-            <h1>Criar conta</h1>
+            <h1 id="form_title">Criar conta</h1>
             <button class="btn-default">
                 <i class="fa-solid fa-right-to-bracket"></i>
             </button>
@@ -25,14 +26,16 @@
                         <input type="text" name="name" id="name" class="form-control" placeholder="Nome">
                         <i class="fa-regular fa-user"></i>
                     </div>
+                    <span class="error"></span>
                 </div>
 
                 <div class="input-box">
                     <label for="surname" class="form-name">Sobrenome</label>
                     <div class="input-field">
-                        <input type="text" name="surname" id="surname" class="form-control" placeholder="Sobrenome">
+                        <input type="text" name="surname" id="surname" class="form-control" placeholder="Sobrenome" >
                         <i class="fa-regular fa-user"></i>
                     </div>
+                    <span class="error"></span>
                 </div>
 
                 <div class="input-box">
@@ -40,6 +43,7 @@
                     <div class="input-field">
                         <input type="date" name="birthdate" id="birthdate" class="form-control">
                     </div>
+                    <span class="error"></span>
                 </div>
 
                 <div class="input-box">
@@ -48,6 +52,7 @@
                         <input type="email" name="email" id="email" class="form-control" placeholder="nome@email.com">
                         <i class="fa-regular fa-envelope"></i>
                     </div>
+                    <span class="error"></span>
                 </div>
 
                 <div class="input-box">
@@ -56,6 +61,7 @@
                         <input type="password" name="password" id="password" class="form-control" placeholder="************">
                         <i class="fa-regular fa-eye-slash password-icon"></i>
                     </div>
+                    <span class="error"></span>
                 </div>
 
                 <div class="input-box">
@@ -64,9 +70,10 @@
                         <input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="************">
                         <i class="fa-regular fa-eye-slash password-icon"></i>
                     </div>
+                    <span class="error"></span>
                 </div>
 
-                <div class="radio-container">
+                <div id="radio_container">
                     <label class="form-label">Gênero</label>
 
                     <div id="gender_inputs">
@@ -78,17 +85,20 @@
                             <label for="male" class="form-label">Masculino</label>
 
                             <input type="radio" name="gender" id="other" class="form-control" value="other">
-                            <label for="other">outro</label>
+                            <label for="other" class="form-label">Outro</label>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <button type="submit">
-                <i class="fa-solid fa-check">Criar conta</i>
+            <button type="submit" class="btn-default">
+                <i class="fa-solid fa-check"></i>
+                Criar conta
             </button>
         </form>
     </main>
+
+    <script src="src/js/script.js"></script>
 </body>
 </html>
