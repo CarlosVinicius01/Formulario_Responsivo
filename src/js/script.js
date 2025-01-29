@@ -55,7 +55,19 @@ form.addEventListener('submit', function (e) {
         }
     })
 
+    const genders = document.getElementsByName('gender')
+    const radioContainer = document.querySelector('#radio_container')
+    const genderErrorSpan = radioContainer.querySelector('.error')
 
+    const selectedGender = [...genders].find(input => input.checked)
+    radioContainer.classList.add('invalid')
+    genderErrorSpan.innerHTML = `${errorIcon} Selecione um gênero!` 
+
+    if (selectedGender) {
+        radioContainer.classList.remove('invalid')
+        genderErrorSpan.innerHTML = ''
+        return
+    }
 })
 
 function isEmpty(value) {
