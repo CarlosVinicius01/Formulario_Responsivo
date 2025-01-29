@@ -157,3 +157,7 @@ input:-webkit-autofill {
     margin-top: 4px;
     max-width: 200px;
 }
+
+#radio_container.invalid .form-label:first-child {
+    color: #e22121;
+}
