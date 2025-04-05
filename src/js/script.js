@@ -1,6 +1,5 @@
 const form = document.querySelector('#form')
 
-
 // campo obrigatório
 form.addEventListener('submit', function (e) {
     e.preventDefault()
@@ -39,6 +38,7 @@ form.addEventListener('submit', function (e) {
     ]
 
     const errorIcon = '<i class="fa-solid fa-circle-exclamation"></i>'
+    let hasError = false
 
     fields.forEach(function (field) {
         const input = document.getElementById(field.id)
@@ -51,7 +51,7 @@ form.addEventListener('submit', function (e) {
         const fieldValidator = field.validator(inputValue)
         if (!fieldValidator.isValid) {
             errorSpan.innerHTML = `${errorIcon} ${fieldValidator.errorMessage}`
-            return
+            hasError = true
         }
     })
 
@@ -60,15 +60,32 @@ form.addEventListener('submit', function (e) {
     const genderErrorSpan = radioContainer.querySelector('.error')
 
     const selectedGender = [...genders].find(input => input.checked)
-    radioContainer.classList.add('invalid')
-    genderErrorSpan.innerHTML = `${errorIcon} Selecione um gênero!` 
-
-    if (selectedGender) {
+    if (!selectedGender) {
+        radioContainer.classList.add('invalid')
+        genderErrorSpan.innerHTML = `${errorIcon} Selecione um gênero!`
+        hasError = true
+    } else {
         radioContainer.classList.remove('invalid')
         genderErrorSpan.innerHTML = ''
-        return
     }
+
+    if (hasError) return
+
+    form.reset()
+
+    document.querySelectorAll('.error').forEach(el => el.innerHTML = '')
+
+    const successMessage = document.getElementById('success-message')
+    successMessage.classList.add('show')
+
+    setTimeout(() => {
+        successMessage.classList.remove('show')
+        setTimeout(() => {
+            successMessage.style.display = 'none'
+        }, 500) 
+    }, 3000)
 })
+
 
 function isEmpty(value) {
     return value === ''
@@ -198,8 +215,6 @@ function passwordMatch(value) {
 
     return validator
 }
-
-
 
 // mostrar senha e olho
 const passwordIcons = document.querySelectorAll('.password-icon')
